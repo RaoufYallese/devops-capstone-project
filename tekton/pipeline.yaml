@@ -14,8 +14,8 @@ spec:
   params:
     - name: repo-url
     - name: branch
-      default: main
     - name: build-image
+      default: main
   tasks:
     - name: init
       workspaces:
@@ -59,7 +59,7 @@ spec:
         name: nose
       params:
       - name: database_uri
-        value: "python:3.9-slim"
+        value: "sqlite:///test.db"
       - name: args
         value: "-v --with-spec --spec-color"
       runAfter:
