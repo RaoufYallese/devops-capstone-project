@@ -28,6 +28,7 @@ HTTPS_ENVIRON = {'wsgi.url_scheme': 'https'}
 class TestAccountService(TestCase):
     """Account Service Tests"""
 
+
     @classmethod
     def setUpClass(cls):
         """Run once before all tests"""
@@ -37,7 +38,6 @@ class TestAccountService(TestCase):
         app.logger.setLevel(logging.CRITICAL)
         init_db(app)
         talisman.force_https = False
-
 
     @classmethod
     def tearDownClass(cls):
@@ -194,7 +194,6 @@ class TestAccountService(TestCase):
         """It should return a CORS header"""
         response = self.client.get('/', environ_overrides=HTTPS_ENVIRON)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        
+
         # Check for the CORS header
         self.assertEqual(response.headers.get('Access-Control-Allow-Origin'), '*')
-
